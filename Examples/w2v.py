@@ -26,7 +26,7 @@ if __name__ == '__main__':
     print_word_statistics(
         w2v.analogy(np.add(w2v['双子座'], w2v['金牛座']) / 2, np.add(w2v['花心'], w2v['小气']) / 2, stars, 5, ['花心', '小气']))
 
-    print("三：同性质模拟类比概念")
+    print("三：同性质类比概念")
     print_word_statistics(w2v.analogy('双子座', np.add(w2v['花心'], w2v['聪明']) / 2, stars, 5, ['花心', '聪明']))
 
     print("四：抽象概念增强")
