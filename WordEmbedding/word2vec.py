@@ -341,7 +341,7 @@ class word2vec(dict):
                     [1 if stop.startswith(self.idx2word[idx]) else 0 for stop in stopwords]) == 0:
                 if self.idx2word[idx] != wordA and self.idx2word[idx] != wordB:
                     result.append((self.idx2word[idx], result_cos[idx]))
-        return result
+        return result[:min(topk, len(result))]
 
     # 根据三个案例产生枚举清单
     def get_enumerator1(self, wordA: str, wordB: str, wordC: str, topk: int = 20):
@@ -361,7 +361,7 @@ class word2vec(dict):
                     [1 if stop.startswith(self.idx2word[idx]) else 0 for stop in stopwords]) == 0:
                 if self.idx2word[idx] != wordA and self.idx2word[idx] != wordB:
                     result.append((self.idx2word[idx], result_cos[idx]))
-        return result
+        return result[:min(topk, len(result))]
 
         # 根据二个案例加上一个负样本产生枚举列表
 
@@ -382,7 +382,7 @@ class word2vec(dict):
                     [1 if stop.startswith(self.idx2word[idx]) else 0 for stop in stopwords]) == 0:
                 if self.idx2word[idx] != wordA or self.idx2word[idx] != wordB:
                     result.append((self.idx2word[idx], result_cos[idx]))
-        return result
+        return result[:min(topk, len(result))]
 
     def get_antonyms(self, wordA: str, topk: int = 10, ispositive: bool = True):
         seed = [['美丽', '丑陋'], ['安全', '危险'], ['成功', '失败'], ['富有', '贫穷'], ['快乐', '悲伤']]
