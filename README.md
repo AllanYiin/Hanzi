@@ -3,8 +3,8 @@ Project Hanzi is focus on the technology and resources for Chinese Nature Langua
 
 analogy(self, wordA, wordB, wordC, topk: int = 10, stopwords: list = [])
 更强大的词向量类比分析，wordC现在可以传入list来扩充对比的例句
+<img style="float: right;width:250px;" src="gallery/WeChat 圖片_2018020726240.jpg" >
 
-!(gallery/WeChat 圖片_2018020726240.jpg)
 
 **模式一:传统类比关系模式**   |   **二：多个类比平均**   |   **三：同性质类比概念**   |   **四：抽象概念增强**
 -------------------------|-------------------------|-------------------------|------------------------
