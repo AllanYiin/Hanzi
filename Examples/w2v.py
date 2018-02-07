@@ -1,13 +1,14 @@
 from WordEmbedding.word2vec import *
 
 if __name__ == '__main__':
+    tst = datetime.datetime.now()
     w2v = word2vec()
 
     # anto = w2v.get_antonyms('尊敬')
     # print(''.join([item[0] + str(w2v.cosine_distance('尊敬', item[0])) for item in anto]))
     # print_word_statistics(anto)
 
-    # print_word_statistics(w2v.find_nearest_word('似乎', 10))
+    print_word_statistics(w2v.find_nearest_word('似乎', 10))
 
     print('')
     print('')
@@ -33,12 +34,15 @@ if __name__ == '__main__':
     print_word_statistics(
         w2v.analogy(np.add(w2v['双子座'], w2v['星座']) / 2, np.add(w2v['花心'], w2v['性格']) / 2, stars, 5, ['花心', '性格']))
 
+    tet = datetime.datetime.now()
+    print('total loading time:{0}'.format(tet - tst))
+
     print('####列举国家清单然后推估他们的首都')
     answer = w2v.get_enumerator("菲律宾", "泰国", 20)
-    cptitals = [item[0] for item in w2v.get_enumerator("北京", "曼谷", 20)]
+    cptitals = [item[0] for item in w2v.get_enumerator("北京", "曼谷", 10)]
     print(cptitals)
     # 比较一下这个
-    cptitals = [item[0] for item in w2v.get_enumerator2("北京", "曼谷", "菲律宾", 20)]  # 找与北京曼谷相似的，但是要把国家排除
+    cptitals = [item[0] for item in w2v.get_enumerator2("北京", "曼谷", "菲律宾", 10)]  # 找与北京曼谷相似的，但是要把国家排除
     print(cptitals)
 
     print('枚举与菲律宾、泰国相似概念的实体…' + print_word_statistics(answer, False))

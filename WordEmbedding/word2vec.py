@@ -223,6 +223,7 @@ class word2vec(dict):
         return list(self.keys())
 
     # 找寻空间最近字
+
     def find_nearest_word(self, represent, topk: int = 10, stopwords: list = [], similarity=cosine_distance):
 
         """
@@ -233,6 +234,7 @@ class word2vec(dict):
         :return:
 
         """
+        st = datetime.datetime.now()
         represent_str = ''
         array1 = np.empty(200)
         if isinstance(represent, str) and represent in self:
@@ -258,6 +260,8 @@ class word2vec(dict):
                     [1 if stop.startswith(self.idx2word[idx]) else 0 for stop in stopwords]) == 0:
                 if (len(stopwords) > 0 and self.idx2word[idx] != stopwords[0]) or len(stopwords) == 0:
                     result.append((self.idx2word[idx], result_cos[idx], represent_str))
+        et = datetime.datetime.now()
+        print('total loading time:{0}'.format(et - st))
         return result[:min(topk, len(result))]
 
     # 模拟关系
